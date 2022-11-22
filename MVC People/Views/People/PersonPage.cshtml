@@ -1,0 +1,30 @@
+﻿@model List<Person>
+@{
+    ViewData["Title"] = "PersonPage";
+}
+
+<h1>Person Page</h1>
+
+<a asp-action="Add">Add a Person</a>
+
+  <div class="row font-weight-bold mt-3">
+    <div class="col-2">Name</div>
+    <div class="col-2">Phone Number</div>
+    <div class="col-2">City</div>
+    <div class="col-2"></div>
+    <div class="col-2"></div>
+    <div class="col-2"></div>
+</div>
+
+
+
+@foreach (Person person in Model)
+{
+    <partial name="_PersonDisplay" model="person"/>
+}
+    
+
+
+
+
+

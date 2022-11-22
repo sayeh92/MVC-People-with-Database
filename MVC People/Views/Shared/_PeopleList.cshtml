@@ -1,0 +1,16 @@
+﻿@model List<Person>
+
+<div class="row shadow p-3 mb-5 bg-light rounded">
+    <div class="col-4">Name</div>
+    <div class="col-4">Phone Number</div>
+    <div class="col-4">City</div>
+</div>
+
+@foreach (Person person in Model)
+{
+        <div class="row shadow p-3 mb-5 bg-light rounded">
+            <div class="col-4">@person.Name</div>
+            <div class="col-4">@person.PhoneNumber</div>
+        <div class="col-4">@person.CityName</div>
+        </div>
+}

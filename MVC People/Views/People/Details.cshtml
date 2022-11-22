@@ -1,0 +1,22 @@
+﻿@model Person
+@{
+    ViewData["Title"] = "Person Details";
+}
+
+<h1>Details</h1>
+
+<hr>
+
+<dl>
+    <dt>Person</dt>
+    <dd>@Model.Name</dd>
+    <hr />
+    <dt>City</dt>
+    <dd>@Model.CityName</dd>
+    <hr />
+    <dt>Phone Number</dt>
+    <dd>@Model.PhoneNumber</dd>
+
+</dl>
+<a asp-action="PersonPage">Go back to main Page</a>
+

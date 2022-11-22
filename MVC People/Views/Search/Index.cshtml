@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Search with Ajax</h1>
+ 
+<button class="btn-light" onclick="ajaxListOfPoeple('@Url.Action("PartialViewPeople", "People")')">Get people list</button>
+<div class="row"></div>
+<br />
+<div class="form-group col-sm-11">
+    <input class="form-control " type="number" name="id" id="idInput" placeholder="People Id" />
+</div>
+<br />
+<button class="btn-light" onclick="ajaxpost('@Url.Action("PartialViewDetails","People")', 'idInput')">Details</button>
+<button class="btn-light" onclick="ajaxpost('@Url.Action("Ajax","People")', 'idInput')">Delete</button>
+<br />
+<hr />
+<div class="row"></div>
+<br />
+<div class="form-group col-sm-11">
+    <input class="form-control " type="text" name="cityname" id="inputCity" placeholder="City" />
+</div>
+<br />
+<button class="btn-light" onclick="ajaxPostcity('@Url.Action("SearchCity","People")', 'inputCity')">Find it</button>
+
+<br />
+<br />
+<div id="result"></div>
