@@ -1,6 +1,21 @@
+using Microsoft.EntityFrameworkCore;
+using MVC_People.Models.Data;
+using MVC_People.Models.Repo;
+using MVC_People.Models.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddDbContext<PeopleDbContext>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+
+//builder.Services.AddScoped<IPeopleRepo, InMemoryPeopleRepo>(); //IoC and DI
+builder.Services.AddScoped<IPeopleRepo, DataBasePeopleRepo>(); //IoC and DI
+//builder.Services.AddScoped<IpeopleService, PeopleService>(); //IoC and DI
+
+
 builder.Services.AddControllersWithViews();
 builder.Services.AddMvc();
 
