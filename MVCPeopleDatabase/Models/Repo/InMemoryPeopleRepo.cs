@@ -13,7 +13,7 @@
         {
             Person person = new Person(name, phonenumber, cityname);
             person.Id = ++IdCounter;
-            person.Name= name;
+            person.Name = name;
             person.PhoneNumber = phonenumber;
             person.CityName = cityname;
             ListOfPeople.Add(person);

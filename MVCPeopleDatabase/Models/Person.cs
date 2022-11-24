@@ -7,6 +7,9 @@ namespace MVCPeopleDatabase.Models
 
 
     {
+        public Person()
+        { }
+
         public Person(string? name, string? phonenumber, string? cityname)
         {
             Name = name;

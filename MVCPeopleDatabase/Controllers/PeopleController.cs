@@ -13,9 +13,10 @@ namespace MVCPeopleDatabase.Controllers
     public class PeopleController : Controller
     {
         IpeopleService _peopleService;
-        public PeopleController()
+        public PeopleController(IpeopleService peopleService)
         {
-            _peopleService = new PeopleService(new InMemoryPeopleRepo());
+            //_peopleService = new PeopleService(new InMemoryPeopleRepo());
+            _peopleService = peopleService;
         }
 
 

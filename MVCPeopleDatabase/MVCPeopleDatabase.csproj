@@ -4,8 +4,8 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>MVC People</RootNamespace>
-    <AssemblyName>MVC People</AssemblyName>
+    <RootNamespace>MVCPeopleDatabase</RootNamespace>
+    <AssemblyName>MVCPeopleDatabase</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
