@@ -10,12 +10,12 @@ namespace MVCPeopleDatabase.Models
         public Person()
         { }
 
-        public Person(string? name, string? phonenumber, string? cityname)
-        {
-            Name = name;
-            PhoneNumber = phonenumber;
-            CityName = cityname;
-        }
+        //public Person(string? name, string? phonenumber, string? cityname)
+        //{
+        //    Name = name;
+        //    PhoneNumber = phonenumber;
+        //    CityName = cityname;
+        //}
 
 
         public int Id { get; set; }

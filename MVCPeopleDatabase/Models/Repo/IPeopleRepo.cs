@@ -3,7 +3,7 @@
     public interface IPeopleRepo
     {
         //CREATE
-        public Person Add(String name, string phonenumber, string cityname);
+        public Person Add(/*String name, string phonenumber, string cityname*/ Person person);
         //READ
         public List<Person> Read();
 

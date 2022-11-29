@@ -9,13 +9,13 @@
         private static int IdCounter = 0;
 
         //Adding person
-        public Person Add(string name, string phonenumber, string cityname)
+        public Person Add(/*string name, string phonenumber, string cityname*/ Person person)
         {
-            Person person = new Person(name, phonenumber, cityname);
+            //Person person = new Person(name, phonenumber, cityname);
             person.Id = ++IdCounter;
-            person.Name = name;
-            person.PhoneNumber = phonenumber;
-            person.CityName = cityname;
+            //person.Name = name;
+            //person.PhoneNumber = phonenumber;
+            //person.CityName = cityname;
             ListOfPeople.Add(person);
             return person;
 
@@ -31,7 +31,7 @@
      
         public Person Read(int id)
         {
-            Person? person = null;
+           // Person? person = null;
             foreach (Person aPerson in ListOfPeople) 
             {
                 if (aPerson.Id == id)
@@ -40,7 +40,8 @@
                    
                 }
             }
-            return person;
+            // return person;
+            return null;
             
         }
 

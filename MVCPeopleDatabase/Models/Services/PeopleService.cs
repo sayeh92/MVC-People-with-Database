@@ -15,20 +15,20 @@ namespace MVCPeopleDatabase.Models.Services
 
         public Person Add(CreatePersonViewModel addperson)
         {
-            Person person = _peopleRepo.Add(addperson.Name, addperson.PhoneNumber, addperson.CityName); 
+            //Person person = _peopleRepo.Add(addperson.Name, addperson.PhoneNumber, addperson.CityName); 
             if (string.IsNullOrWhiteSpace(addperson.Name) ||
                 string.IsNullOrWhiteSpace(addperson.CityName) ||
                 string.IsNullOrWhiteSpace(addperson.PhoneNumber))
             { throw new ArgumentException("Name, CityName, PhoneNumber Not allowed WhiteSpace"); }
-            //Person person = new Person();
-            //{
+            Person person = new Person();
+            {
 
-            //    person.Name = addperson.Name;
-            //    person.PhoneNumber = addperson.PhoneNumber;
-            //    person.CityName = addperson.CityName;
+                person.Name = addperson.Name;
+                person.PhoneNumber = addperson.PhoneNumber;
+                person.CityName = addperson.CityName;
 
-            //}
-            //person = _peopleRepo.Add(person);
+            }
+            person = _peopleRepo.Add(person);
             return person;
         }
 

@@ -11,19 +11,18 @@ namespace MVCPeopleDatabase.Models.Repo
             _peopleDbContext = peopleDbContext;
         }
 
-        public Person Add(string name, string phonenumber, string cityname)
+        public Person Add(/*string name, string phonenumber, string cityname*/ Person person)
         {
-            throw new NotImplementedException();
+            _peopleDbContext.Add(person);
+            _peopleDbContext.SaveChanges();
+            return person;
         }
 
-        public bool Delete(Person person)
-        {
-            throw new NotImplementedException();
-        }
+       
 
         public List<Person> GetByCity(string cityname)
         {
-            throw new NotImplementedException();
+            return _peopleDbContext.People.Where(person => person.CityName.Contains(cityname)).ToList();
         }
 
         public List<Person> Read()
@@ -33,12 +32,21 @@ namespace MVCPeopleDatabase.Models.Repo
 
         public Person Read(int id)
         {
-            throw new NotImplementedException();
+            return _peopleDbContext.People.SingleOrDefault(person => person.Id == id);
         }
 
         public bool Update(Person person)
         {
-            throw new NotImplementedException();
+            _peopleDbContext.Update(person);
+            _peopleDbContext.SaveChanges();
+            return true;
+        }
+
+        public bool Delete(Person person)
+        {
+           _peopleDbContext.Remove(person);
+            _peopleDbContext.SaveChanges();
+            return true;
         }
     }
 }
