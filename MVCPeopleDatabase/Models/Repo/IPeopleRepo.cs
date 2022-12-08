@@ -7,7 +7,7 @@
         //READ
         public List<Person> Read();
 
-        public List<Person> GetByCity(string cityname);
+        //public List<Person> GetByCity(string cityname);
 
         public Person Read(int id);
 

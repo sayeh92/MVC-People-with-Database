@@ -1,4 +1,5 @@
-﻿using MVCPeopleDatabase.Models.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using MVCPeopleDatabase.Models.Data;
 
 namespace MVCPeopleDatabase.Models.Repo
 {
@@ -13,21 +14,21 @@ namespace MVCPeopleDatabase.Models.Repo
 
         public Person Add(/*string name, string phonenumber, string cityname*/ Person person)
         {
-            _peopleDbContext.Add(person);
+            _peopleDbContext.People.Add(person);
             _peopleDbContext.SaveChanges();
             return person;
         }
 
        
 
-        public List<Person> GetByCity(string cityname)
-        {
-            return _peopleDbContext.People.Where(person => person.CityName.Contains(cityname)).ToList();
-        }
+        //public List<Person> GetByCity(string cityname)
+        //{
+        //    return _peopleDbContext.People.Where(person => person.CityName.Contains(cityname)).ToList();
+        //}
 
         public List<Person> Read()
         {
-            return _peopleDbContext.People.ToList();
+            return _peopleDbContext.People.Include(Person => Person).ToList();
         }
 
         public Person Read(int id)

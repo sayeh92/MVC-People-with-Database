@@ -53,7 +53,7 @@
             {
                 orginalPerson.Name = person.Name;
                 orginalPerson.PhoneNumber = person.PhoneNumber;
-                orginalPerson.CityName = person.CityName;
+               // orginalPerson.CityName = person.CityName;
                 return true;
             }
 
@@ -70,18 +70,18 @@
             return false;
         }
 
-        public List<Person> GetByCity(string cityname)
-        {
-            List<Person> cityListForSearch = new List<Person>();
-            foreach (Person aperson in ListOfPeople)
-            {
-                if (aperson.CityName == cityname)
-                {
-                    cityListForSearch.Add(aperson);
-                }
-            }
-            return cityListForSearch;
-        }
+        //public List<Person> GetByCity(string cityname)
+        //{
+        //    List<Person> cityListForSearch = new List<Person>();
+        //    foreach (Person aperson in ListOfPeople)
+        //    {
+        //        if (aperson.CityName == cityname)
+        //        {
+        //            cityListForSearch.Add(aperson);
+        //        }
+        //    }
+        //    return cityListForSearch;
+        //}
 
         
     }

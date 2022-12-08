@@ -17,7 +17,7 @@ namespace MVCPeopleDatabase.Models.Services
         {
             //Person person = _peopleRepo.Add(addperson.Name, addperson.PhoneNumber, addperson.CityName); 
             if (string.IsNullOrWhiteSpace(addperson.Name) ||
-                string.IsNullOrWhiteSpace(addperson.CityName) ||
+                //string.IsNullOrWhiteSpace(addperson.CityName) ||
                 string.IsNullOrWhiteSpace(addperson.PhoneNumber))
             { throw new ArgumentException("Name, CityName, PhoneNumber Not allowed WhiteSpace"); }
             Person person = new Person();
@@ -25,7 +25,7 @@ namespace MVCPeopleDatabase.Models.Services
 
                 person.Name = addperson.Name;
                 person.PhoneNumber = addperson.PhoneNumber;
-                person.CityName = addperson.CityName;
+               // person.CityName = addperson.CityName;
 
             }
             person = _peopleRepo.Add(person);
@@ -38,7 +38,7 @@ namespace MVCPeopleDatabase.Models.Services
             if (OriginalPerson != null)
             {
                 OriginalPerson.Name = editPerson.Name;
-                OriginalPerson.CityName = editPerson.CityName;
+               // OriginalPerson.CityName = editPerson.CityName;
                 OriginalPerson.PhoneNumber = editPerson.PhoneNumber;
             }
             return _peopleRepo.Update(OriginalPerson);
@@ -56,10 +56,10 @@ namespace MVCPeopleDatabase.Models.Services
             return _peopleRepo.Read();
         }
 
-        public List<Person> FindByCity(string cityname)
-        {
-            return _peopleRepo.GetByCity(cityname);
-        }
+        //public List<Person> FindByCity(string cityname)
+        //{
+        //    return _peopleRepo.GetByCity(cityname);
+        //}
 
         public bool Remove(int id)
         {
@@ -69,29 +69,29 @@ namespace MVCPeopleDatabase.Models.Services
         }
 
 
-        public List<Person> Search(string search)
-        {
-            return _peopleRepo.GetByCity(search);
+        //public List<Person> Search(string search)
+        //{
+        //    return _peopleRepo.GetByCity(search);
 
 
-            //foreach (Person item in _peopleRepo.Read())
-            //{
-            //    if (item.Name.Contains(search, StringComparison.OrdinalIgnoreCase) ||
-            //        item.CityName.Contains(search, StringComparison.OrdinalIgnoreCase))
-            //    {
+        //    //foreach (Person item in _peopleRepo.Read())
+        //    //{
+        //    //    if (item.Name.Contains(search, StringComparison.OrdinalIgnoreCase) ||
+        //    //        item.CityName.Contains(search, StringComparison.OrdinalIgnoreCase))
+        //    //    {
 
-            //        SearchPerson = SearchPerson.Where(p => p.Name.ToUpper().Contains(search.ToUpper()) ||
-            //        p.CityName.Contains(search.ToUpper())).ToList();
-            //        SearchPerson.Add(item);
-            //    }
-            //}
+        //    //        SearchPerson = SearchPerson.Where(p => p.Name.ToUpper().Contains(search.ToUpper()) ||
+        //    //        p.CityName.Contains(search.ToUpper())).ToList();
+        //    //        SearchPerson.Add(item);
+        //    //    }
+        //    //}
 
-            //if (SearchPerson.Count == 0)
-            //{
-            //    throw new ArgumentException("Not here");
-            //}
-            //return SearchPerson;
-        }
+        //    //if (SearchPerson.Count == 0)
+        //    //{
+        //    //    throw new ArgumentException("Not here");
+        //    //}
+        //    //return SearchPerson;
+        //}
 
 
     }

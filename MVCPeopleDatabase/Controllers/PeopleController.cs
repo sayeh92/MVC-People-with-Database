@@ -32,7 +32,7 @@ namespace MVCPeopleDatabase.Controllers
             return View(new CreatePersonViewModel());
         }
 
-        [HttpPost]
+        [HttpPost] 
         [AutoValidateAntiforgeryToken]
         public IActionResult Add(CreatePersonViewModel addPerson)
         {
@@ -44,7 +44,7 @@ namespace MVCPeopleDatabase.Controllers
                 }
                 catch (ArgumentException exception)
                 {
-                    ModelState.AddModelError("Name and CityName", exception.Message);
+                    ModelState.AddModelError("Name /*and CityName*/", exception.Message);
                     return View(addPerson);
                 }
 
@@ -83,7 +83,7 @@ namespace MVCPeopleDatabase.Controllers
 
                 editPerson.Name = person.Name;
                 editPerson.PhoneNumber = person.PhoneNumber;
-                editPerson.CityName = person.CityName;
+                //editPerson.CityName = person.CityName;
             }
             return View(editPerson);
         }
@@ -121,15 +121,15 @@ namespace MVCPeopleDatabase.Controllers
 
         }
 
-        [HttpPost]
-        public IActionResult PersonPage(string search)
-        {
-            if (search != null)
-            {
-                return View(_peopleService.Search(search));
-            }
-            return RedirectToAction(nameof(PersonPage));
-        }
+        //[HttpPost]
+        //public IActionResult PersonPage(string search)
+        //{
+        //    if (search != null)
+        //    {
+        //        return View(_peopleService.Search(search));
+        //    }
+        //    return RedirectToAction(nameof(PersonPage));
+        //}
 
         //This is for ajaxListOfPoeple-get-function in Ajax. 
         public IActionResult PartialViewPeople()
@@ -161,17 +161,17 @@ namespace MVCPeopleDatabase.Controllers
         }
 
 
-        public IActionResult SearchCity(string cityname)
-        {
-            List<Person> person = _peopleService.FindByCity(cityname);
-            if (person != null)
-            {
-                return PartialView("_peopleList", person);
+        //public IActionResult SearchCity(string cityname)
+        //{
+        //    List<Person> person = _peopleService.FindByCity(cityname);
+        //    if (person != null)
+        //    {
+        //        return PartialView("_peopleList", person);
 
-            }
-            return BadRequest();
+        //    }
+        //    return BadRequest();
 
-        }
+        //}
 
        
     } 

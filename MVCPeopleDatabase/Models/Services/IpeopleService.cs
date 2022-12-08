@@ -8,9 +8,9 @@ namespace MVCPeopleDatabase.Models.Services
 
         List<Person> All();
       
-        List<Person> FindByCity(string cityname);
+        //List<Person> FindByCity(string cityname);
 
-        List<Person> Search(string search);
+        //List<Person> Search(string search);
 
         Person FindById(int id);
 
