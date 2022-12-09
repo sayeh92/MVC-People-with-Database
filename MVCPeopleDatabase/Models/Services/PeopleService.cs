@@ -6,7 +6,7 @@ namespace MVCPeopleDatabase.Models.Services
     public class PeopleService : IpeopleService
     {
 
-        IPeopleRepo _peopleRepo;
+        private readonly IPeopleRepo _peopleRepo;
         public PeopleService(IPeopleRepo peopleRepo)
         {
             _peopleRepo = peopleRepo;

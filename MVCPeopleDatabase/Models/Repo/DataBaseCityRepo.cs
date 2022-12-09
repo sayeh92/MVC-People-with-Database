@@ -24,7 +24,7 @@ namespace MVCPeopleDatabase.Models.Repo
             return true;
         }
 
-        public City FindByIdCity(int id)
+        public City ReadCity(int id)
         {
             return _peopleDbContext.Cities.SingleOrDefault(city => city.Id == id);
         }
