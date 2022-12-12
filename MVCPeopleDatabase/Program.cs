@@ -13,7 +13,9 @@ options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectio
 
 //builder.Services.AddScoped<IPeopleRepo, InMemoryPeopleRepo>(); //IoC and DI
 builder.Services.AddScoped<IPeopleRepo, DataBasePeopleRepo>(); //IoC and DI
-builder.Services.AddScoped<IpeopleService, PeopleService>(); //IoC and DI
+builder.Services.AddScoped<IpeopleService, PeopleService>();
+builder.Services.AddScoped<ICityRepo, DataBaseCityRepo>();
+builder.Services.AddScoped<ICityService, CityService>();//IoC and DI
 
 
 builder.Services.AddControllersWithViews();
