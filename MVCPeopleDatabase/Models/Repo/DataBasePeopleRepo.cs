@@ -5,7 +5,7 @@ namespace MVCPeopleDatabase.Models.Repo
 {
     public class DataBasePeopleRepo : IPeopleRepo
     {
-        readonly PeopleDbContext _peopleDbContext;
+       private readonly PeopleDbContext _peopleDbContext;
 
         public DataBasePeopleRepo (PeopleDbContext peopleDbContext)
         {
@@ -28,7 +28,7 @@ namespace MVCPeopleDatabase.Models.Repo
 
         public List<Person> Read()
         {
-            return _peopleDbContext.People.Include(Person => Person).ToList();
+            return _peopleDbContext.People.Include(Person => Person.City).ToList();
         }
 
         public Person Read(int id)

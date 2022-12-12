@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System.Configuration;
 using System.Diagnostics.Metrics;
+using System.Linq;
 
 namespace MVCPeopleDatabase.Models.Data
 {

@@ -16,6 +16,10 @@ namespace MVCPeopleDatabase.Models
         [Required]
         [MaxLength(80)]
         public string? CityName { get; set; }
+        public City(string CityName)
+        {
+            CityName = CityName;
+        }
         public List<Person>? People { get; set; }//Navigation Property
 
         public int CountryId { get; set; }// PeopleDbContext ForeignKey

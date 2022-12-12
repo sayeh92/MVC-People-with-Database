@@ -1,5 +1,6 @@
 ﻿using MessagePack;
 using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Xml.Linq;
 
 namespace MVCPeopleDatabase.Models
@@ -15,14 +16,15 @@ namespace MVCPeopleDatabase.Models
         public Person()
         { }
 
-        //public Person(string? name/*, string? phonenumber*//*, string? cityname*/)
-        //{
-        //    Name = name;
-        //    //PhoneNumber = phonenumber;
-        //    //CityName = cityname;
-        //}
+        public Person(string? name/*, string? phonenumber*//*, string? cityname*/)
+        {
+            name = name;
+            //phonenumber = phonenumber;
+            //cityname = cityname;
+        }
+        [ForeignKey(nameof(City))]
         public int CityId { get; set; } 
-      
+      public City? City { get; set; }
         
         //public string? CityName { get; set; }
     }
