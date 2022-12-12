@@ -18,13 +18,13 @@ namespace MVCPeopleDatabase.Models
 
         public Person(string? name/*, string? phonenumber*//*, string? cityname*/)
         {
-            name = name;
+            Name = name;
             //phonenumber = phonenumber;
             //cityname = cityname;
         }
         [ForeignKey(nameof(City))]
         public int CityId { get; set; } 
-      public City? City { get; set; }
+        public City? City { get; set; }
         
         //public string? CityName { get; set; }
     }

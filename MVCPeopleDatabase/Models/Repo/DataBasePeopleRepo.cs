@@ -28,7 +28,7 @@ namespace MVCPeopleDatabase.Models.Repo
 
         public List<Person> Read()
         {
-            return _peopleDbContext.People.Include(Person => Person.City).ToList();
+            return _peopleDbContext.People.Include(person => person.City).ToList();
         }
 
         public Person Read(int id)

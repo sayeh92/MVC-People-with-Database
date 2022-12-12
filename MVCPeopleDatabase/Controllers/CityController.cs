@@ -2,6 +2,7 @@
 using MVCPeopleDatabase.Models;
 using MVCPeopleDatabase.Models.Services;
 using MVCPeopleDatabase.Models.ViewModels;
+using System.Collections.Generic;
 
 namespace MVCPeopleDatabase.Controllers
 {
@@ -10,7 +11,7 @@ namespace MVCPeopleDatabase.Controllers
         private readonly ICityService _cityService;
         private ICityService cityService;
 
-        public CityController(ICityService _cityService)
+        public CityController(ICityService cityService)
         {
 
             _cityService = cityService;
