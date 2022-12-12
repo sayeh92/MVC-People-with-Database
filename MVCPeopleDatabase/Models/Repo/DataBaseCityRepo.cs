@@ -30,7 +30,7 @@ namespace MVCPeopleDatabase.Models.Repo
         }
 
      
-        List<City> ICityRepo.ReadAllCity()
+        public List<City> ReadAllCity()
         {
             return _peopleDbContext.Cities.ToList();
         }
