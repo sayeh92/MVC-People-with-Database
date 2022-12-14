@@ -20,17 +20,22 @@ namespace MVCPeopleDatabase.Models.Services
            return _countryRepo.Add(new Country(AddCountry.CountryName));
         }
 
-        public List<Country> All()
+        public List<Country> AllCountry()
         {
             return _countryRepo.GetAll();
         }
 
-       
-
-        public bool Edit(int id, CreateCountryViewModel editCountry)
+               
+        public Country FindCountry(int id)
         {
-            Country OriginalCountry = FindById(id);
-            if (OriginalCountry == null) 
+          Country FoundCountry = _countryRepo.FindCountry(id);
+            return FoundCountry;
+        }
+
+        public bool EditCountry(int id, CreateCountryViewModel editCountry)
+        {
+            Country OriginalCountry = FindCountry(id);
+            if (OriginalCountry == null)
             {
                 return false;
             }
@@ -38,13 +43,7 @@ namespace MVCPeopleDatabase.Models.Services
             return _countryRepo.Edit(OriginalCountry);
         }
 
-        public Country FindById(int id)
-        {
-          Country FoundCountry = _countryRepo.FindById(id);
-            return FoundCountry;
-        }
-
-        public bool Remove(int id)
+        public bool RemoveCountry(int id)
         {
             Country DeletedCountry = _countryRepo.FindById(id);
             bool CountryDone = _countryRepo.Delete(DeletedCountry);

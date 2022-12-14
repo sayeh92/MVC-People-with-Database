@@ -3,12 +3,12 @@
     public interface ICountryService
     {
         Country Add(CreateCountryViewModel AddCountry);
-        List<Country> All();
+        List<Country> AllCountry();
        
 
-        Country FindById(int id);
+        Country FindCountry(int id);
 
-        bool Edit(int id, CreateCountryViewModel editCountry);
-        bool Remove (int id);
+        bool EditCountry(int id, CreateCountryViewModel editCountry);
+        bool RemoveCountry (int id);
     }
 }

@@ -22,6 +22,11 @@ namespace MVCPeopleDatabase.Models.Services
             throw new NotImplementedException();
         }
 
+        public City FindCityById(int id)
+        {
+            return _cityRepo.ReadCity(id);
+        }
+
         public bool EditCity(int id, CreateCityViewModel editCity)
         {
             City OriginalCity = FindCityById(id);
@@ -33,11 +38,7 @@ namespace MVCPeopleDatabase.Models.Services
             return _cityRepo.Update(OriginalCity);
         }
 
-        public City FindCityById(int id)
-        {
-            return _cityRepo.ReadCity(id);
-        }
-
+      
         public bool RemoveCity(int id)
         {
             City DeleteCity = _cityRepo.ReadCity(id);
