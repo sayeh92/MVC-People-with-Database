@@ -17,6 +17,12 @@
                 <input asp-for="FilterString" class="form-control" />
                 <span asp-validation-for="FilterString" class="text-danger"></span>
             </div>
+            <datalist id="CityNameList">
+                @foreach (string CityName in Model.CityNameList)
+                {
+                    <option value="@Country.Id">@Country.CountryName</option>
+                }
+            </datalist>
             <div class="form-group">
                 <input type="submit" value="CreateCity" class="btn btn-primary" />
             </div>

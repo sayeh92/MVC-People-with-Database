@@ -1,43 +1,33 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MVCPeopleDatabase.Models.Repo;
-using MVCPeopleDatabase.Models.Services;
-using MVCPeopleDatabase.Models.ViewModels;
-using NuGet.Protocol;
-using System.Net;
-using System;
 using MVCPeopleDatabase.Models;
-
+using MVCPeopleDatabase.Models.ViewModels;
 
 namespace MVCPeopleDatabase.Controllers
 {
-    public class PeopleController : Controller
+    public class CountryController : Controller
     {
-        IpeopleService _peopleService;
-        private readonly ICityService _cityService;
-        public PeopleController(IpeopleService peopleService, ICityService cityService)
+        private readonly ICountryService _countryService;
+        public CountryController(ICountryService countryService) 
         {
-            //_peopleService = new PeopleService(new InMemoryPeopleRepo());
-            _peopleService = peopleService;
-            _cityService = cityService;
+            _countryService = countryService;
         }
-
-
-
-        public IActionResult PersonPage()
+        public IActionResult Index()
         {
-            return View(_peopleService.All());
+            return View(_countryService.All());
         }
+       
 
         [HttpGet]
         public IActionResult Add()
         {
-         
+
             CreatePersonViewModel viewModel = new CreatePersonViewModel();
             model.Cities = _cityService.AllCity();
             return View(model);
         }
 
-        [HttpPost] 
+
+        [HttpPost]
         [AutoValidateAntiforgeryToken]
         public IActionResult Add(CreatePersonViewModel addPerson)
         {
@@ -60,7 +50,6 @@ namespace MVCPeopleDatabase.Controllers
             return View(addPerson);
         }
 
-        //Details Button
         public IActionResult Details(int id)
         {
             Person person = _peopleService.FindById(id);
@@ -73,7 +62,6 @@ namespace MVCPeopleDatabase.Controllers
             return View(person);
         }
 
-        //Edit Button
         [HttpGet]
         [AutoValidateAntiforgeryToken]
         public IActionResult Edit(int id)
@@ -107,7 +95,6 @@ namespace MVCPeopleDatabase.Controllers
             return View(editPerson);
         }
 
-        //Delete Button
         public IActionResult Delete(int id)
         {
 
@@ -125,59 +112,5 @@ namespace MVCPeopleDatabase.Controllers
             return View(person);
 
         }
-
-        //[HttpPost]
-        //public IActionResult PersonPage(string search)
-        //{
-        //    if (search != null)
-        //    {
-        //        return View(_peopleService.Search(search));
-        //    }
-        //    return RedirectToAction(nameof(PersonPage));
-        //}
-
-        //This is for ajaxListOfPoeple-get-function in Ajax. 
-        public IActionResult PartialViewPeople()
-        {
-
-            return PartialView("_PeopleList", _peopleService.All());
-        }
-        
-        [HttpPost]
-        public IActionResult PartialViewDetails(int id)
-        {
-            Person person = _peopleService.FindById(id);
-            if (person != null)
-            {
-                return PartialView("_personDisplay", person);
-            }
-            return NotFound();
-        }
-
-
-        public IActionResult Ajax(int id)
-        {
-            Person person = _peopleService.FindById(id);
-            if (_peopleService.Remove(id))
-            {
-                return PartialView("_peopleList", _peopleService.All());
-            }
-            return NotFound();
-        }
-
-
-        //public IActionResult SearchCity(string cityname)
-        //{
-        //    List<Person> person = _peopleService.FindByCity(cityname);
-        //    if (person != null)
-        //    {
-        //        return PartialView("_peopleList", person);
-
-        //    }
-        //    return BadRequest();
-
-        //}
-
-       
-    } 
+    }
 }

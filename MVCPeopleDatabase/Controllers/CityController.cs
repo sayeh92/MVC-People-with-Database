@@ -9,7 +9,7 @@ namespace MVCPeopleDatabase.Controllers
     public class CityController : Controller
     {
         private readonly ICityService _cityService;
-        private ICityService cityService;
+       
 
         public CityController(ICityService cityService)
         {
