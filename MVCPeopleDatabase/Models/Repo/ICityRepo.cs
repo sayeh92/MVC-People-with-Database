@@ -4,7 +4,7 @@ namespace MVCPeopleDatabase.Models.Repo
 {
     public interface ICityRepo
     {
-        public City Create(City city);
+        public City CreateCity(City city);
         public List<City> ReadAllCity();
         public City ReadCity(int id);
         public bool Update(City city);

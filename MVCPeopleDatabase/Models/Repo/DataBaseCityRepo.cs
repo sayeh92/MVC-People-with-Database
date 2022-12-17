@@ -10,7 +10,7 @@ namespace MVCPeopleDatabase.Models.Repo
         {
             _peopleDbContext = peopleDbContext;
         }
-        public City Create(City city)
+        public City CreateCity(City city)
         {
            _peopleDbContext.Cities.Add(city);
             _peopleDbContext.SaveChanges();

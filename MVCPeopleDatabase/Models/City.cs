@@ -7,7 +7,7 @@ namespace MVCPeopleDatabase.Models
     public class City
     {
         [Key]
-        public int Id { get; set; }// Key
+        public int CityId { get; set; }// Key
         public City()
         {
 

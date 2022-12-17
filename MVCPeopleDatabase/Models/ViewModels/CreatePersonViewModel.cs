@@ -11,8 +11,13 @@ namespace MVCPeopleDatabase.Models.ViewModels
         [Display(Name = "PhoneNumber")]
         [Required]
         public string? PhoneNumber { get; set; }
-       // [Display(Name = "CityName")]
-        //[Required]
+
+        [Display(Name = "CityName")]
+        [Required]
+        public int CityId { get; set; }
+        [Display(Name = "Language")]
+        [Required]
+        public int LanguageId { get; set; }
         //[StringLength(80, MinimumLength = 1)]
         //public string? CityName { get; set; }
         //public List<string> CityNameList
@@ -23,7 +28,7 @@ namespace MVCPeopleDatabase.Models.ViewModels
 
         //    }
         //}
-  
+
     }
            
 }
