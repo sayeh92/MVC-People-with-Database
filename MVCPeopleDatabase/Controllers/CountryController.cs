@@ -22,7 +22,7 @@ namespace MVCPeopleDatabase.Controllers
         {
 
             CreatePersonViewModel viewModel = new CreatePersonViewModel();
-            model.Cities = _cityService.AllCity();
+            viewModel.Cities = _cityService.AllCity();
             return View(model);
         }
 
