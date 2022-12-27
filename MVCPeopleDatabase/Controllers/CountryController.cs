@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MVCPeopleDatabase.Models;
+using MVCPeopleDatabase.Models.Services;
 using MVCPeopleDatabase.Models.ViewModels;
 
 namespace MVCPeopleDatabase.Controllers
@@ -13,7 +14,7 @@ namespace MVCPeopleDatabase.Controllers
         }
         public IActionResult Index()
         {
-            return View(_countryService.All());
+            return View(_countryService.FindAll());
         }
        
 
@@ -21,21 +22,21 @@ namespace MVCPeopleDatabase.Controllers
         public IActionResult Add()
         {
 
-            CreatePersonViewModel viewModel = new CreatePersonViewModel();
-            viewModel.Cities = _cityService.AllCity();
-            return View(model);
+            CreateCountryViewModel countryModel = new CreateCountryViewModel();
+            //viewModel.Cities = _cityService.AllCity();
+            return View(countryModel);
         }
 
 
         [HttpPost]
         [AutoValidateAntiforgeryToken]
-        public IActionResult Add(CreatePersonViewModel addPerson)
+        public IActionResult Add(CreateCountryViewModel addPerson)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _peopleService.Add(addPerson);
+                    _countryService.Add(addPerson);
                 }
                 catch (ArgumentException exception)
                 {
@@ -45,71 +46,70 @@ namespace MVCPeopleDatabase.Controllers
 
                 //after adding the person, with this line of code it goes back to the whole list, 
                 //otherwise it will stay in the same form and you can not see the information you submitted.
-                return RedirectToAction(nameof(PersonPage));
+                return RedirectToAction(nameof(Index));
             }
             return View(addPerson);
         }
 
         public IActionResult Details(int id)
         {
-            Person person = _peopleService.FindById(id);
+            Country country = _countryService.FindById(id);
 
-            if (person == null)
+            if (country == null)
             {
-                return RedirectToAction(nameof(PersonPage));
+                return RedirectToAction(nameof(Index));
             }
 
-            return View(person);
+            return View(country);
         }
 
         [HttpGet]
         [AutoValidateAntiforgeryToken]
         public IActionResult Edit(int id)
         {
-            Person person = _peopleService.FindById(id);
-            if (person == null)
+            Country country = _countryService.FindById(id);
+            if (country == null)
             {
-                return RedirectToAction(nameof(PersonPage));
+                return RedirectToAction(nameof(Index));
             }
-            CreatePersonViewModel editPerson = new CreatePersonViewModel();
+            CreateCountryViewModel editCountry = new CreateCountryViewModel();
             {
 
-                editPerson.Name = person.Name;
-                editPerson.PhoneNumber = person.PhoneNumber;
-                CityId = person.Id;
+                editCountry.Name = country.Name;
+               // editCountry.id = id;
             }
-            return View(editPerson);
+            return View(editCountry);
         }
 
-        [HttpPost]
+        [HttpPut]
         [AutoValidateAntiforgeryToken]
 
-        public IActionResult Edit(int id, CreatePersonViewModel editPerson)
+        public IActionResult Edit(int id, CreateCountryViewModel editCountry)
         {
             if (ModelState.IsValid)
             {
-                _peopleService.Edit(id, editPerson);
-                return RedirectToAction(nameof(PersonPage));
+                _countryService.Update(id, editCountry);
+                return RedirectToAction(nameof(Index));
             }
-            _peopleService.Add(editPerson);
-            return View(editPerson);
+            _countryService.Add(editCountry);
+            return View(editCountry);
         }
 
         public IActionResult Delete(int id)
         {
 
-            Person person = _peopleService.FindById(id);
+            Country country = _countryService.FindById(id);
 
-            if (person == null)
+            if (country == null)
             {
-                return RedirectToAction(nameof(PersonPage));
+                return RedirectToAction(nameof(Index));
             }
             else
             {
-                _peopleService.Remove(id);
+                _countryService.RemoveById(id);
             }
 
-            return View(person);
+            return View(country);
 
         }
     }

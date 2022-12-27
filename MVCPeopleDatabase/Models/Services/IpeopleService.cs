@@ -6,7 +6,7 @@ namespace MVCPeopleDatabase.Models.Services
 
         Person Add(CreatePersonViewModel addPerson);
 
-        List<Person> All();
+        List<Person> FindAllPeople();
       
         //List<Person> FindByCity(string cityname);
 

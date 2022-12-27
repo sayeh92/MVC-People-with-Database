@@ -11,11 +11,13 @@ builder.Services.AddDbContext<PeopleDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 
-//builder.Services.AddScoped<IPeopleRepo, InMemoryPeopleRepo>(); //IoC and DI
+//builder.Services.AddScoped<IPeopleRepo, InMemoryPeopleRepo>(); //FOR INJECTING DEPENDENCY
 builder.Services.AddScoped<IPeopleRepo, DataBasePeopleRepo>(); //IoC and DI
 builder.Services.AddScoped<IpeopleService, PeopleService>();
 builder.Services.AddScoped<ICityRepo, DataBaseCityRepo>();
 builder.Services.AddScoped<ICityService, CityService>();//IoC and DI
+builder.Services.AddScoped<ICountryRepo, DataBaseCountryRepo>();
+builder.Services.AddScoped<ICountryService, CountryService>();
 
 
 builder.Services.AddControllersWithViews();

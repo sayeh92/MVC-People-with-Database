@@ -51,7 +51,7 @@ namespace MVCPeopleDatabase.Models.Services
             return _peopleRepo.Read(id);
         }
 
-        public List<Person> All()
+        public List<Person> FindAllPeople()
         {
             return _peopleRepo.Read();
         }

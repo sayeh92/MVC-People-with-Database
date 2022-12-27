@@ -1,12 +1,15 @@
-﻿namespace MVCPeopleDatabase.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace MVCPeopleDatabase.Models
 {
     public class Country
     {
+        [Key]
         public int CountryId { get; set; }
-        public string CountryName { get; set; }
+        public string Name { get; set; }
 
         public List<City> Cities { get; set;}
         public Country() { }
-        public Country(string countryName) { CountryName = countryName; }
+        public Country(string countryName) { Name = countryName; }
     }
 }

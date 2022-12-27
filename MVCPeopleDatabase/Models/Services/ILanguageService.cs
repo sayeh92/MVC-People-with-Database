@@ -1,14 +1,17 @@
-﻿namespace MVCPeopleDatabase.Models.Services
+﻿using MVCPeopleDatabase.Models.ViewModels;
+
+namespace MVCPeopleDatabase.Models.Services
 {
     public interface ILanguageService
     {
-        Country Add(CreateLanguageViewModel AddLanguage);
+        Language Add(CreateLanguageViewModel AddLanguage);
         List<Language> AllLanguage();
 
-        Country FindLanguage(int id);
+        Language FindLanguage(int id);
 
         bool EditLanguage(int id, CreateLanguageViewModel editLanguage);
         bool RemoveLanguage(int id);
+       
     }
 }
 

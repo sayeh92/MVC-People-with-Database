@@ -1,30 +1,43 @@
-﻿namespace MVCPeopleDatabase.Models.Repo
+﻿using MVCPeopleDatabase.Models.Data;
+
+namespace MVCPeopleDatabase.Models.Repo
 {
     public class DataBaseLanguageRepo : ILanguageRepo
     {
+        readonly PeopleDbContext _peopleDbContext;
+        public DataBaseLanguageRepo(PeopleDbContext peopleDbContext)
+        {
+            _peopleDbContext = peopleDbContext;
+        }
         public Language CreateLanguage(Language language)
         {
-            throw new NotImplementedException();
+            _peopleDbContext.Languages.Add(language);
+            _peopleDbContext.SaveChanges();
+            return language;
         }
 
         public bool DeleteLanguage(Language language)
         {
-            throw new NotImplementedException();
+            _peopleDbContext.Languages.Remove(language);
+            _peopleDbContext.SaveChanges();
+            return true;
         }
 
         public List<Language> ReadAllLanguage()
         {
-            throw new NotImplementedException();
+            return _peopleDbContext.Languages.ToList();
         }
 
         public Language ReadLanguage(int id)
         {
-            throw new NotImplementedException();
+            return _peopleDbContext.Languages.SingleOrDefault(language => language.Id == id);
         }
 
         public bool UpdateLanguage(Language language)
         {
-            throw new NotImplementedException();
+            _peopleDbContext.Update(language);
+            _peopleDbContext.SaveChanges();
+            return true;
         }
     }
 }

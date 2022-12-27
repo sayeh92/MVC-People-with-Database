@@ -1,14 +1,16 @@
-﻿namespace MVCPeopleDatabase.Models.Services
+﻿using MVCPeopleDatabase.Models.ViewModels;
+
+namespace MVCPeopleDatabase.Models.Services
 {
     public interface ICountryService
     {
         Country Add(CreateCountryViewModel AddCountry);
-        List<Country> AllCountry();
+        List<Country> FindAll();
        
 
-        Country FindCountry(int id);
+        Country FindById(int id);
 
-        bool EditCountry(int id, CreateCountryViewModel editCountry);
-        bool RemoveCountry (int id);
+        bool Update(int id, CreateCountryViewModel editCountry);
+        bool RemoveById (int id);
     }
 }

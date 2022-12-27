@@ -6,8 +6,8 @@ namespace MVCPeopleDatabase.Models.Services
   
     {
 
-        private IlanguageRepo _languageRepo;
-        public LanguageService (IlanguageRepo, languageRepo) 
+        private ILanguageRepo _languageRepo;
+        public LanguageService (ILanguageRepo languageRepo) 
         {
             _languageRepo = languageRepo;
 

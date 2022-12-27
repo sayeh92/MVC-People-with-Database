@@ -12,12 +12,12 @@ namespace MVCPeopleDatabase.Controllers
 {
     public class PeopleController : Controller
     {
-        IpeopleService _peopleService;
-        private readonly ICityService _cityService;
+        private readonly IpeopleService _countryService;//field we defined the dependency here and in the line 20 we inject the dependency
+        private readonly ICityService _cityService;//field
         public PeopleController(IpeopleService peopleService, ICityService cityService)
         {
-            //_peopleService = new PeopleService(new InMemoryPeopleRepo());
-            _peopleService = peopleService;
+            //_countryService = new PeopleService(new InMemoryPeopleRepo());
+            _countryService = peopleService;
             _cityService = cityService;
         }
 
@@ -25,17 +25,17 @@ namespace MVCPeopleDatabase.Controllers
 
         public IActionResult PersonPage()
         {
-            return View(_peopleService.All());
+            return View(_countryService.FindAllPeople());
         }
 
-        [HttpGet]
-        public IActionResult Add()
-        {
+        //[HttpGet]
+        //public IActionResult Add()
+        //{
          
-            CreatePersonViewModel viewModel = new CreatePersonViewModel();
-            model.Cities = _cityService.AllCity();
-            return View(model);
-        }
+        //    CreatePersonViewModel viewModel = new CreatePersonViewModel();
+        //    viewModel. = _cityService.AllCity();
+        //    return View(model);
+        //}
 
         [HttpPost] 
         [AutoValidateAntiforgeryToken]
@@ -45,7 +45,7 @@ namespace MVCPeopleDatabase.Controllers
             {
                 try
                 {
-                    _peopleService.Add(addPerson);
+                    _countryService.Add(addPerson);
                 }
                 catch (ArgumentException exception)
                 {
@@ -61,114 +61,114 @@ namespace MVCPeopleDatabase.Controllers
         }
 
         //Details Button
-        public IActionResult Details(int id)
-        {
-            Person person = _peopleService.FindById(id);
+        //public IActionResult Details(int id)
+        //{
+        //    Person person = _countryService.FindById(id);
 
-            if (person == null)
-            {
-                return RedirectToAction(nameof(PersonPage));
-            }
+        //    if (person == null)
+        //    {
+        //        return RedirectToAction(nameof(PersonPage));
+        //    }
 
-            return View(person);
-        }
+        //    return View(person);
+        //}
 
-        //Edit Button
-        [HttpGet]
-        [AutoValidateAntiforgeryToken]
-        public IActionResult Edit(int id)
-        {
-            Person person = _peopleService.FindById(id);
-            if (person == null)
-            {
-                return RedirectToAction(nameof(PersonPage));
-            }
-            CreatePersonViewModel editPerson = new CreatePersonViewModel();
-            {
+        ////Edit Button
+        //[HttpGet]
+        //[AutoValidateAntiforgeryToken]
+        //public IActionResult Edit(int id)
+        //{
+        //    Person person = _countryService.FindById(id);
+        //    if (person == null)
+        //    {
+        //        return RedirectToAction(nameof(PersonPage));
+        //    }
+        //    CreatePersonViewModel editPerson = new CreatePersonViewModel();
+        //    {
 
-                editPerson.Name = person.Name;
-                editPerson.PhoneNumber = person.PhoneNumber;
-                CityId = person.Id;
-            }
-            return View(editPerson);
-        }
+        //        editPerson.Name = person.Name;
+        //        editPerson.PhoneNumber = person.PhoneNumber;
+        //        CityId = person.Id;
+        //    }
+        //    return View(editPerson);
+        //}
 
-        [HttpPost]
-        [AutoValidateAntiforgeryToken]
+        //[HttpPost]
+        //[AutoValidateAntiforgeryToken]
 
-        public IActionResult Edit(int id, CreatePersonViewModel editPerson)
-        {
-            if (ModelState.IsValid)
-            {
-                _peopleService.Edit(id, editPerson);
-                return RedirectToAction(nameof(PersonPage));
-            }
-            _peopleService.Add(editPerson);
-            return View(editPerson);
-        }
+        //public IActionResult Edit(int id, CreatePersonViewModel editPerson)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        _countryService.Edit(id, editPerson);
+        //        return RedirectToAction(nameof(PersonPage));
+        //    }
+        //    _countryService.Add(editPerson);
+        //    return View(editPerson);
+        //}
 
-        //Delete Button
-        public IActionResult Delete(int id)
-        {
+        ////Delete Button
+        //public IActionResult Delete(int id)
+        //{
 
-            Person person = _peopleService.FindById(id);
+        //    Person person = _countryService.FindById(id);
 
-            if (person == null)
-            {
-                return RedirectToAction(nameof(PersonPage));
-            }
-            else
-            {
-                _peopleService.Remove(id);
-            }
+        //    if (person == null)
+        //    {
+        //        return RedirectToAction(nameof(PersonPage));
+        //    }
+        //    else
+        //    {
+        //        _countryService.Remove(id);
+        //    }
 
-            return View(person);
+        //    return View(person);
 
-        }
+        //}
 
         //[HttpPost]
         //public IActionResult PersonPage(string search)
         //{
         //    if (search != null)
         //    {
-        //        return View(_peopleService.Search(search));
+        //        return View(_countryService.Search(search));
         //    }
         //    return RedirectToAction(nameof(PersonPage));
         //}
 
         //This is for ajaxListOfPoeple-get-function in Ajax. 
-        public IActionResult PartialViewPeople()
-        {
+        //public IActionResult PartialViewPeople()
+        //{
 
-            return PartialView("_PeopleList", _peopleService.All());
-        }
+        //    return PartialView("_PeopleList", _countryService.FindAllPeople());
+        //}
         
-        [HttpPost]
-        public IActionResult PartialViewDetails(int id)
-        {
-            Person person = _peopleService.FindById(id);
-            if (person != null)
-            {
-                return PartialView("_personDisplay", person);
-            }
-            return NotFound();
-        }
+        //[HttpPost]
+        //public IActionResult PartialViewDetails(int id)
+        //{
+        //    Person personVariable = _countryService.FindById(id);
+        //    if (personVariable != null)//means if you found the person
+        //    {
+        //        return PartialView("_personDisplay", personVariable);
+        //    }
+        //    return NotFound();
+        //}
 
 
-        public IActionResult Ajax(int id)
-        {
-            Person person = _peopleService.FindById(id);
-            if (_peopleService.Remove(id))
-            {
-                return PartialView("_peopleList", _peopleService.All());
-            }
-            return NotFound();
-        }
+        //public IActionResult Ajax(int id)
+        //{
+        //    Person person = _countryService.FindById(id);
+        //    if (_countryService.Remove(id))
+        //    {
+        //        return PartialView("_peopleList", _countryService.FindAllPeople());
+        //    }
+        //    return NotFound();
+        //}
 
 
         //public IActionResult SearchCity(string cityname)
         //{
-        //    List<Person> person = _peopleService.FindByCity(cityname);
+        //    List<Person> person = _countryService.FindByCity(cityname);
         //    if (person != null)
         //    {
         //        return PartialView("_peopleList", person);

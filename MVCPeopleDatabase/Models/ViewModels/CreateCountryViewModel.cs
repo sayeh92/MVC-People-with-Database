@@ -7,7 +7,7 @@ namespace MVCPeopleDatabase.Models.ViewModels
     {
         [Display(Name = "Country")]
         [Required]
-        public string? CountryName { get; set; }
-        public List<City> Country { get; set;}
+        public string? Name { get; set; }
+        public List<City>? Cities { get; set;}
     }
 }

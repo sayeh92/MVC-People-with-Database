@@ -5,7 +5,7 @@ namespace MVCPeopleDatabase.Models
     public class Language
     {
         [Key]
-        public int LanguageId { get; set; }
+        public int Id { get; set; }
         public string LanguageName { get; set; }
         public string People { get; set; }
         public List<PeopleLanguage> PeopleLanguages { get; set; }

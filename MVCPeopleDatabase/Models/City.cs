@@ -14,7 +14,7 @@ namespace MVCPeopleDatabase.Models
         }
         public City(string CityName)
         {
-            CityName = CityName;
+            this.CityName = CityName;
         }
 
         [Required]
