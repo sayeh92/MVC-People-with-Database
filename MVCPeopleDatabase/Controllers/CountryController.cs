@@ -30,25 +30,25 @@ namespace MVCPeopleDatabase.Controllers
 
         [HttpPost]
         [AutoValidateAntiforgeryToken]
-        public IActionResult Add(CreateCountryViewModel addPerson)
+        public IActionResult Add(CreateCountryViewModel addCountry)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _countryService.Add(addPerson);
+                    _countryService.Add(addCountry);
                 }
                 catch (ArgumentException exception)
                 {
                     ModelState.AddModelError("Name /*and CityName*/", exception.Message);
-                    return View(addPerson);
+                    return View(addCountry);
                 }
 
                 //after adding the person, with this line of code it goes back to the whole list, 
                 //otherwise it will stay in the same form and you can not see the information you submitted.
                 return RedirectToAction(nameof(Index));
             }
-            return View(addPerson);
+            return View(addCountry);
         }
 
         public IActionResult Details(int id)

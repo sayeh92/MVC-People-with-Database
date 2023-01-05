@@ -68,6 +68,11 @@ namespace MVCPeopleDatabase.Models.Services
             return Done;
         }
 
+        public List<Person> FindByCity(City foundCity)
+        {
+           return _peopleRepo.GetPersonByCity(foundCity);
+        }
+
 
         //public List<Person> Search(string search)
         //{

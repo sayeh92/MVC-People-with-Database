@@ -39,14 +39,14 @@ namespace MVCPeopleDatabase.Models.Repo
 
         public bool Update(Person person)
         {
-            _peopleDbContext.Update(person);
+            _peopleDbContext.People.Update(person);
             _peopleDbContext.SaveChanges();
             return true;
         }
 
         public bool Delete(Person person)
         {
-           _peopleDbContext.Remove(person);
+           _peopleDbContext.People.Remove(person);
             _peopleDbContext.SaveChanges();
             return true;
         }

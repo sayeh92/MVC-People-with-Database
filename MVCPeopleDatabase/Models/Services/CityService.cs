@@ -45,5 +45,11 @@ namespace MVCPeopleDatabase.Models.Services
             bool DoneCity = _cityRepo.Delete(DeleteCity);
             return DoneCity;
         }
+
+        public City FindByCityName(string cityName)
+        {
+            return  _cityRepo.GetCityByCityName(cityName);
+            
+        }
     }
 }

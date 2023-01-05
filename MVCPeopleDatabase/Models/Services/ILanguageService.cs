@@ -7,9 +7,9 @@ namespace MVCPeopleDatabase.Models.Services
         Language Add(CreateLanguageViewModel AddLanguage);
         List<Language> AllLanguage();
 
-        Language FindLanguage(int id);
+        Language FindLanguageById(int id);
 
-        bool EditLanguage(int id, CreateLanguageViewModel editLanguage);
+        bool EditLanguageById(int id, CreateLanguageViewModel editLanguage);
         bool RemoveLanguage(int id);
        
     }

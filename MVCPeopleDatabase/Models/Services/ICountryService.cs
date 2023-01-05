@@ -4,13 +4,13 @@ namespace MVCPeopleDatabase.Models.Services
 {
     public interface ICountryService
     {
-        Country Add(CreateCountryViewModel AddCountry);
+        Country CreateCity(CreateCountryViewModel CreateCity);
         List<Country> FindAll();
        
 
-        Country FindById(int id);
+        Country FindCityById(int id);
 
-        bool Update(int id, CreateCountryViewModel editCountry);
-        bool RemoveById (int id);
+        bool UpdateCity(int id, CreateCountryViewModel editCountry);
+        bool RemoveCityById (int id);
     }
 }

@@ -1,30 +1,43 @@
-﻿namespace MVCPeopleDatabase.Models.Repo
+﻿using MVCPeopleDatabase.Models.Data;
+
+namespace MVCPeopleDatabase.Models.Repo
 {
     public class DataBaseCountryRepo : ICountryRepo
     {
+        readonly PeopleDbContext _peopleDbContext;
+        public DataBaseCountryRepo(PeopleDbContext peopleDbContext)
+        {
+            _peopleDbContext = peopleDbContext;
+        }
         public Country CreateCountry(Country country)
         {
-            throw new NotImplementedException();
+            _peopleDbContext.Countries.Add(country);
+            _peopleDbContext.SaveChanges();
+            return country;
         }
 
         public bool DeleteCountry(Country country)
         {
-            throw new NotImplementedException();
+            _peopleDbContext.Countries.Remove(country);
+            _peopleDbContext.SaveChanges();
+            return true;
         }
 
         public List<Country> ReadAllCountry()
         {
-            throw new NotImplementedException();
+            return _peopleDbContext.Countries.ToList();
         }
 
         public Country FindById(int id)
         {
-            throw new NotImplementedException();
+      return _peopleDbContext.Countries.SingleOrDefault(country => country.Id == id);
         }
 
         public bool UpdateCountry(Country country)
         {
-            throw new NotImplementedException();
+            _peopleDbContext.Update(country);
+            _peopleDbContext.SaveChanges();
+            return true;
         }
     }
 }

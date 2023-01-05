@@ -17,6 +17,6 @@
 
         //DELETE
         public bool Delete(Person  person);
-      
+        //List<Person> GetPersonByCity(City foundCity);
     }
 }
