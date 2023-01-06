@@ -38,7 +38,7 @@ namespace MVCPeopleDatabase.Models.Services
 
         public bool EditLanguageById(int id, CreateLanguageViewModel editLanguage)
         {
-            Language OriginalLanguage = Read(id);
+            Language OriginalLanguage = FindLanguageById(id);
             if (OriginalLanguage != null)
             {
                 OriginalLanguage.LanguageName = editLanguage.LanguageName;
@@ -48,14 +48,14 @@ namespace MVCPeopleDatabase.Models.Services
             return _languageRepo.Update(OriginalLanguage);
         }
 
-        public Country FindLanguageById(int id)
+        public Language FindLanguageById(int id)
         {
             return _languageRepo.Read(id);
         }
 
         public bool RemoveLanguage(int id)
         {
-            Person DeleteLanguage = _languageRepo.Read(id);
+            Language DeleteLanguage = _languageRepo.Read(id);
             bool Done = _languageRepo.Delete(DeleteLanguage);
             return Done;
         }
