@@ -9,31 +9,31 @@ namespace MVCPeopleDatabase.Models.Repo
         {
             _peopleDbContext = peopleDbContext;
         }
-        public Language CreateLanguage(Language language)
+        public Language Create(Language language)
         {
             _peopleDbContext.Languages.Add(language);
             _peopleDbContext.SaveChanges();
             return language;
         }
 
-        public bool DeleteLanguage(Language language)
+        public bool Delete(Language language)
         {
             _peopleDbContext.Languages.Remove(language);
             _peopleDbContext.SaveChanges();
             return true;
         }
 
-        public List<Language> ReadAllLanguage()
+        public List<Language> ReadAll()
         {
             return _peopleDbContext.Languages.ToList();
         }
 
-        public Language ReadLanguage(int id)
+        public Language Read(int id)
         {
             return _peopleDbContext.Languages.SingleOrDefault(language => language.Id == id);
         }
 
-        public bool UpdateLanguage(Language language)
+        public bool Update(Language language)
         {
             _peopleDbContext.Update(language);
             _peopleDbContext.SaveChanges();

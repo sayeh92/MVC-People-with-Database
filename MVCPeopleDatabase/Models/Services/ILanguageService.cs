@@ -4,7 +4,7 @@ namespace MVCPeopleDatabase.Models.Services
 {
     public interface ILanguageService
     {
-        Language Add(CreateLanguageViewModel AddLanguage);
+        Language Add(CreateLanguageViewModel addLanguage);
         List<Language> AllLanguage();
 
         Language FindLanguageById(int id);

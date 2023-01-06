@@ -2,10 +2,10 @@
 {
     public interface ILanguageRepo
     {
-        public Language CreateLanguage(Language language);
-        public List<Language> ReadAllLanguage();
-        public Language ReadLanguage(int id);
-        public bool UpdateLanguage(Language language);
-        public bool DeleteLanguage(Language language);
+        public Language Create(Language language);
+        public List<Language> ReadAll();
+        public Language Read(int id);
+        public bool Update(Language language);
+        public bool Delete(Language language);
     }
 }

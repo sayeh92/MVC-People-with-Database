@@ -1,4 +1,5 @@
 ﻿using MVCPeopleDatabase.Models.Repo;
+using MVCPeopleDatabase.Models.ViewModels;
 
 namespace MVCPeopleDatabase.Models.Services
 {
@@ -15,37 +16,47 @@ namespace MVCPeopleDatabase.Models.Services
         }
 
 
-         public Country Add(CreateLanguageViewModel AddLanguage)
+         public Language Add(CreateLanguageViewModel addLanguage)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrWhiteSpace(addLanguage.LanguageName) )
+            { throw new ArgumentException("Name Not allowed WhiteSpace"); }
+            Language language = new Language();
+            {
+
+                language.LanguageName = addLanguage.LanguageName;
+               
+
+            }
+            language = _languageRepo.Create(language);
+            return language;
         }
 
         public List<Language> AllLanguage()
         {
-            return _cityRepo.ReadAllCity();
+            return _languageRepo.ReadAll();
         }
 
-        public bool EditLanguage(int id, CreateLanguageViewModel editLanguage)
+        public bool EditLanguageById(int id, CreateLanguageViewModel editLanguage)
         {
-            Language OriginalLanguage = FindLanguage(id);
+            Language OriginalLanguage = Read(id);
             if (OriginalLanguage != null)
             {
-                OriginalLanguage.Name = editLanguage.Name;
+                OriginalLanguage.LanguageName = editLanguage.LanguageName;
                 
-                OriginalLanguage.PhoneNumber = editLanguage.PhoneNumber;
+               
             }
-            return _peopleRepo.Update(OriginalLanguage);
+            return _languageRepo.Update(OriginalLanguage);
         }
 
-        public Country FindLanguage(int id)
+        public Country FindLanguageById(int id)
         {
-            return _peopleRepo.Read(id);
+            return _languageRepo.Read(id);
         }
 
         public bool RemoveLanguage(int id)
         {
-            Person DeletePerson = _peopleRepo.Read(id);
-            bool Done = _peopleRepo.Delete(DeletePerson);
+            Person DeleteLanguage = _languageRepo.Read(id);
+            bool Done = _languageRepo.Delete(DeleteLanguage);
             return Done;
         }
     }

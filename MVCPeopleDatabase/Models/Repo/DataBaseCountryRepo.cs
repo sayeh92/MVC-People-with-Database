@@ -9,21 +9,21 @@ namespace MVCPeopleDatabase.Models.Repo
         {
             _peopleDbContext = peopleDbContext;
         }
-        public Country CreateCountry(Country country)
+        public Country Create(Country country)
         {
             _peopleDbContext.Countries.Add(country);
             _peopleDbContext.SaveChanges();
             return country;
         }
 
-        public bool DeleteCountry(Country country)
+        public bool Delete(Country country)
         {
             _peopleDbContext.Countries.Remove(country);
             _peopleDbContext.SaveChanges();
             return true;
         }
 
-        public List<Country> ReadAllCountry()
+        public List<Country> ReadAll()
         {
             return _peopleDbContext.Countries.ToList();
         }
@@ -33,7 +33,7 @@ namespace MVCPeopleDatabase.Models.Repo
       return _peopleDbContext.Countries.SingleOrDefault(country => country.Id == id);
         }
 
-        public bool UpdateCountry(Country country)
+        public bool Update(Country country)
         {
             _peopleDbContext.Update(country);
             _peopleDbContext.SaveChanges();

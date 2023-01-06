@@ -10,7 +10,7 @@ namespace MVCPeopleDatabase.Models.Repo
         {
             _peopleDbContext = peopleDbContext;
         }
-        public City CreateCity(City city)
+        public City Create(City city)
         {
            _peopleDbContext.Cities.Add(city);
             _peopleDbContext.SaveChanges();
@@ -24,13 +24,13 @@ namespace MVCPeopleDatabase.Models.Repo
             return true;
         }
 
-        public City ReadCity(int id)
+        public City Read(int id)
         {
             return _peopleDbContext.Cities.SingleOrDefault(city => city.Id == id);
         }
 
      
-        public List<City> ReadAllCity()
+        public List<City> ReadAll()
         {
             return _peopleDbContext.Cities.ToList();
         }

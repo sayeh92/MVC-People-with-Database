@@ -14,30 +14,28 @@ namespace MVCPeopleDatabase.Models.Services
        
         public City CreateCity(CreateCityViewModel createCity)
         {
-            if (string.IsNullOrWhiteSpace(createCity.Name) ||
-                //string.IsNullOrWhiteSpace(addperson.CityName) ||
-                string.IsNullOrWhiteSpace(createCity.PhoneNumber))
-            { throw new ArgumentException("Name, CityName, PhoneNumber Not allowed WhiteSpace"); }
-            Person person = new Person();
+            if (string.IsNullOrWhiteSpace(createCity.CityName))
+             
+            { throw new ArgumentException("Name Not allowed WhiteSpace"); }
+            City city = new City();
             {
 
-                person.Name = createCity.Name;
-                person.PhoneNumber = createCity.PhoneNumber;
-                // person.CityName = addperson.CityName;
+                city.CityName = createCity.CityName;
+               
 
             }
-            person = _peopleRepo.Add(person);
-            return person;
+            city = _cityRepo.Create(city);
+            return city;
         }
 
         public List<City> AllCity()
         {
-            return _cityRepo.ReadAllCity();
+            return _cityRepo.ReadAll();
         }
 
         public City FindCityById(int id)
         {
-            return _cityRepo.ReadCity(id);
+            return _cityRepo.Read(id);
         }
 
         public bool EditCity(int id, CreateCityViewModel editCity)
@@ -54,7 +52,7 @@ namespace MVCPeopleDatabase.Models.Services
       
         public bool RemoveCity(int id)
         {
-            City DeleteCity = _cityRepo.ReadCity(id);
+            City DeleteCity = _cityRepo.Read(id);
             bool DoneCity = _cityRepo.Delete(DeleteCity);
             return DoneCity;
         }

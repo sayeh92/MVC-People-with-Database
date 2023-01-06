@@ -19,12 +19,12 @@ namespace MVCPeopleDatabase.Models.Services
                 return null;
             }
 
-           return _countryRepo.CreateCountry(new Country(AddCountry.Name));
+           return _countryRepo.Create(new Country(AddCountry.Name));
         }
 
         public List<Country> FindAllCountry()
         {
-            return _countryRepo.ReadAllCountry();
+            return _countryRepo.ReadAll();
         }
                
         public Country FindCountryById(int id)
@@ -40,13 +40,13 @@ namespace MVCPeopleDatabase.Models.Services
                 return false;
             }
             OriginalCountry.Name = editCountry.Name;
-            return _countryRepo.UpdateCountry(OriginalCountry);
+            return _countryRepo.Update(OriginalCountry);
         }
 
         public bool RemoveCountryById(int id)
         {
             Country DeletedCountry = _countryRepo.FindById(id);
-            bool CountryDone = _countryRepo.DeleteCountry(DeletedCountry);
+            bool CountryDone = _countryRepo.Delete(DeletedCountry);
             return CountryDone;
         }
 

@@ -19,7 +19,7 @@ namespace MVCPeopleDatabase.Models.Services
             if (string.IsNullOrWhiteSpace(addperson.Name) ||
                 //string.IsNullOrWhiteSpace(addperson.CityName) ||
                 string.IsNullOrWhiteSpace(addperson.PhoneNumber))
-            { throw new ArgumentException("Name, CityName, PhoneNumber Not allowed WhiteSpace"); }
+            { throw new ArgumentException("Name, PhoneNumber Not allowed WhiteSpace"); }
             Person person = new Person();
             {
 
@@ -46,7 +46,7 @@ namespace MVCPeopleDatabase.Models.Services
 
 
 
-        public Person FindCityById(int id)
+        public Person FindById(int id)
         {
             return _peopleRepo.Read(id);
         }
@@ -68,10 +68,10 @@ namespace MVCPeopleDatabase.Models.Services
             return Done;
         }
 
-        public List<Person> FindByCity(City foundCity)
-        {
-           return _peopleRepo.(foundCity);
-        }
+        //public List<Person> FindByCity(City foundCity)
+        //{
+        //   return _peopleRepo.Read(foundCity);
+        //}
 
 
         //public List<Person> Search(string search)

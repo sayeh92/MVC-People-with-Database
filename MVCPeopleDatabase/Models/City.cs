@@ -8,14 +8,8 @@ namespace MVCPeopleDatabase.Models
     {
         [Key]
         public int Id { get; set; }// Key
-        public City()
-        {
-
-        }
-        public City(string CityName)
-        {
-            this.CityName = CityName;
-        }
+        public City() {}
+        public City(string CityName) {this.CityName = CityName;}
 
         [Required]
         [MaxLength(80)]
