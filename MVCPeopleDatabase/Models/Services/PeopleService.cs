@@ -46,7 +46,7 @@ namespace MVCPeopleDatabase.Models.Services
 
 
 
-        public Person FindById(int id)
+        public Person FindCityById(int id)
         {
             return _peopleRepo.Read(id);
         }
@@ -70,7 +70,7 @@ namespace MVCPeopleDatabase.Models.Services
 
         public List<Person> FindByCity(City foundCity)
         {
-           return _peopleRepo.GetPersonByCity(foundCity);
+           return _peopleRepo.(foundCity);
         }
 
 

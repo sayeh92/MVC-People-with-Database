@@ -24,7 +24,9 @@ namespace MVCPeopleDatabase.Controllers
         [HttpGet]
         public IActionResult CreateCity()
         {
-            return View(new CreateCityViewModel());
+            CreateCityViewModel cityModel = new CreateCityViewModel();
+
+            return View(cityModel);
         }
 
         [HttpPost]

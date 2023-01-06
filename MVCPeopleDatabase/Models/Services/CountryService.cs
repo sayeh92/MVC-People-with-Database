@@ -12,38 +12,38 @@ namespace MVCPeopleDatabase.Models.Services
             _countryRepo = countryRepo;
         }
 
-        public Country Add(CreateCountryViewModel AddCountry)
+        public Country CreateCountry(CreateCountryViewModel AddCountry)
         {
            if (string.IsNullOrWhiteSpace(AddCountry.Name)) 
             {
                 return null;
             }
 
-           return _countryRepo.Add(new Country(AddCountry.Name));
+           return _countryRepo.CreateCountry(new Country(AddCountry.Name));
         }
 
-        public List<Country> FindAll()
+        public List<Country> FindAllCountry()
         {
             return _countryRepo.ReadAllCountry();
         }
                
-        public Country FindById(int id)
+        public Country FindCountryById(int id)
         {
             return _countryRepo.FindById(id);
            
         }
-        public bool Update(int id, CreateCountryViewModel editCountry)
+        public bool UpdateCountry(int id, CreateCountryViewModel editCountry)
         {
-            Country OriginalCountry = FindById(id);
+            Country OriginalCountry = FindCountryById(id);
             if (OriginalCountry == null)
             {
                 return false;
             }
-            OriginalCountry.Name = editCountry.CountryName;
+            OriginalCountry.Name = editCountry.Name;
             return _countryRepo.UpdateCountry(OriginalCountry);
         }
 
-        public bool RemoveById(int id)
+        public bool RemoveCountryById(int id)
         {
             Country DeletedCountry = _countryRepo.FindById(id);
             bool CountryDone = _countryRepo.DeleteCountry(DeletedCountry);

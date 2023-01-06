@@ -12,6 +12,6 @@ namespace MVCPeopleDatabase.Models.Services
         bool EditCity(int id, CreateCityViewModel editCity);
 
         bool RemoveCity(int id);
-        City FindByCityName(string cityName);
+        //City FindByCityName(string cityName);
     }
 }

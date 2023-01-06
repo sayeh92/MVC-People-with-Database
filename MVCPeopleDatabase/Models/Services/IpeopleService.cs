@@ -8,7 +8,7 @@ namespace MVCPeopleDatabase.Models.Services
 
         List<Person> FindAllPeople();
       
-        //List<Person> FindByCity(string cityname);
+        List<Person> FindByCity(string cityname);
 
         //List<Person> Search(string search);
 
@@ -17,6 +17,6 @@ namespace MVCPeopleDatabase.Models.Services
         bool Edit(int id, CreatePersonViewModel editPerson);
 
         bool Remove(int id);
-        List <Person> FindByCity(City foundCity);
+        //List <Person> FindByCity(City foundCity);
     }
 }

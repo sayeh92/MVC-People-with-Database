@@ -12,14 +12,27 @@ namespace MVCPeopleDatabase.Models.Services
             _cityRepo= cityRepo;
         }
        
-       public List<City> AllCity()
+        public City CreateCity(CreateCityViewModel createCity)
         {
-           return _cityRepo.ReadAllCity();
+            if (string.IsNullOrWhiteSpace(createCity.Name) ||
+                //string.IsNullOrWhiteSpace(addperson.CityName) ||
+                string.IsNullOrWhiteSpace(createCity.PhoneNumber))
+            { throw new ArgumentException("Name, CityName, PhoneNumber Not allowed WhiteSpace"); }
+            Person person = new Person();
+            {
+
+                person.Name = createCity.Name;
+                person.PhoneNumber = createCity.PhoneNumber;
+                // person.CityName = addperson.CityName;
+
+            }
+            person = _peopleRepo.Add(person);
+            return person;
         }
 
-        public City CreateCity(CreateCityViewModel CreateCity)
+        public List<City> AllCity()
         {
-            throw new NotImplementedException();
+            return _cityRepo.ReadAllCity();
         }
 
         public City FindCityById(int id)
@@ -46,10 +59,10 @@ namespace MVCPeopleDatabase.Models.Services
             return DoneCity;
         }
 
-        public City FindByCityName(string cityName)
-        {
-            return  _cityRepo.GetCityByCityName(cityName);
+        //public City FindByCityName(string cityName)
+        //{
+        //    return  _cityRepo.ReadCity(cityName);
             
-        }
+        //}
     }
 }

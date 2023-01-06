@@ -7,14 +7,14 @@ namespace MVCPeopleDatabase.Controllers
 {
     public class CountryController : Controller
     {
-        private readonly ICountryService _countryService;
+         readonly ICountryService _countryService;
         public CountryController(ICountryService countryService) 
         {
             _countryService = countryService;
         }
         public IActionResult Index()
         {
-            return View(_countryService.FindAll());
+            return View(_countryService.FindAllCountry());
         }
        
 
@@ -30,17 +30,17 @@ namespace MVCPeopleDatabase.Controllers
 
         [HttpPost]
         [AutoValidateAntiforgeryToken]
-        public IActionResult Add(CreateCountryViewModel addCountry)
+        public IActionResult CreateCountry(CreateCountryViewModel addCountry)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _countryService.Add(addCountry);
+                    _countryService.CreateCountry(addCountry);
                 }
                 catch (ArgumentException exception)
                 {
-                    ModelState.AddModelError("Name /*and CityName*/", exception.Message);
+                    ModelState.AddModelError("Error", exception.Message);
                     return View(addCountry);
                 }
 
@@ -53,7 +53,7 @@ namespace MVCPeopleDatabase.Controllers
 
         public IActionResult Details(int id)
         {
-            Country country = _countryService.FindById(id);
+            Country country = _countryService.FindCountryById(id);
 
             if (country == null)
             {
@@ -67,7 +67,7 @@ namespace MVCPeopleDatabase.Controllers
         [AutoValidateAntiforgeryToken]
         public IActionResult Edit(int id)
         {
-            Country country = _countryService.FindById(id);
+            Country country = _countryService.FindCountryById(id);
             if (country == null)
             {
                 return RedirectToAction(nameof(Index));
@@ -88,17 +88,17 @@ namespace MVCPeopleDatabase.Controllers
         {
             if (ModelState.IsValid)
             {
-                _countryService.Update(id, editCountry);
+                _countryService.UpdateCountry(id, editCountry);
                 return RedirectToAction(nameof(Index));
             }
-            _countryService.Add(editCountry);
+            _countryService.CreateCountry(editCountry);
             return View(editCountry);
         }
 
         public IActionResult Delete(int id)
         {
 
-            Country country = _countryService.FindById(id);
+            Country country = _countryService.FindCountryById(id);
 
             if (country == null)
             {
@@ -106,7 +106,7 @@ namespace MVCPeopleDatabase.Controllers
             }
             else
             {
-                _countryService.RemoveById(id);
+                _countryService.RemoveCountryById(id);
             }
 
             return View(country);
