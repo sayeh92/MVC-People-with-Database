@@ -16,11 +16,14 @@ namespace MVCPeopleDatabase.Models.Services
         {
             if (string.IsNullOrWhiteSpace(createCity.CityName))
              
-            { throw new ArgumentException("Name Not allowed WhiteSpace"); }
+            {
+                throw new ArgumentException("Not allowed WhiteSpace");
+            }
             City city = new City();
             {
 
                 city.CityName = createCity.CityName;
+                
                
 
             }
@@ -43,7 +46,7 @@ namespace MVCPeopleDatabase.Models.Services
             City OriginalCity = FindCityById(id);
             if (OriginalCity != null)
             {
-                OriginalCity.CityName = OriginalCity.CityName;
+                OriginalCity.CityName = editCity.CityName;
                 
             }
             return _cityRepo.Update(OriginalCity);

@@ -18,7 +18,8 @@ builder.Services.AddScoped<ICityRepo, DataBaseCityRepo>();
 builder.Services.AddScoped<ICityService, CityService>();//IoC and DI
 builder.Services.AddScoped<ICountryRepo, DataBaseCountryRepo>();
 builder.Services.AddScoped<ICountryService, CountryService>();
-
+builder.Services.AddScoped<ILanguageRepo, DataBaseLanguageRepo>();
+builder.Services.AddScoped<ILanguageService, LanguageService>();
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddMvc();

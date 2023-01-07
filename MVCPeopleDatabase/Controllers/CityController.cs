@@ -9,11 +9,11 @@ namespace MVCPeopleDatabase.Controllers
     public class CityController : Controller
     {
         private readonly ICityService _cityService;
-       
+        readonly ICountryService _countryService;
 
-        public CityController(ICityService cityService)
+        public CityController(ICityService cityService, ICountryService countryService)
         {
-
+            _countryService = countryService;
             _cityService = cityService;
         }
         public IActionResult Index()
@@ -25,7 +25,7 @@ namespace MVCPeopleDatabase.Controllers
         public IActionResult CreateCity()
         {
             CreateCityViewModel cityModel = new CreateCityViewModel();
-
+            
             return View(cityModel);
         }
 

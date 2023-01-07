@@ -38,7 +38,7 @@ namespace MVCPeopleDatabase.Models.Services
             if (OriginalPerson != null)
             {
                 OriginalPerson.Name = editPerson.Name;
-               // OriginalPerson.CityName = editPerson.CityName;
+              
                 OriginalPerson.PhoneNumber = editPerson.PhoneNumber;
             }
             return _peopleRepo.Update(OriginalPerson);

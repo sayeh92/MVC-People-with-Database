@@ -17,10 +17,10 @@ namespace MVCPeopleDatabase.Models
      
         public Person(){ }  
 
-        public Person(string? name, string? phonenumber/*, string? cityname*/)
+        public Person(string? name/*, string? phonenumber*//*, string? cityname*/)
         {
             Name = name;
-            phonenumber = phonenumber;
+            //phonenumber = phonenumber;
             //cityname = cityname;
         }
 

@@ -1,4 +1,5 @@
-﻿using MVCPeopleDatabase.Models.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using MVCPeopleDatabase.Models.Data;
 
 namespace MVCPeopleDatabase.Models.Repo
 {
@@ -32,7 +33,7 @@ namespace MVCPeopleDatabase.Models.Repo
      
         public List<City> ReadAll()
         {
-            return _peopleDbContext.Cities.ToList();
+            return _peopleDbContext.Cities.Include(city => city.Id == id).ToList();
         }
 
         public bool Update(City city)
