@@ -33,7 +33,7 @@ namespace MVCPeopleDatabase.Models.Repo
      
         public List<City> ReadAll()
         {
-            return _peopleDbContext.Cities.Include(city => city.Id == id).ToList();
+            return _peopleDbContext.Cities.Include(city => city.Country).ToList();
         }
 
         public bool Update(City city)
