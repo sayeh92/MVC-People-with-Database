@@ -49,7 +49,8 @@ namespace MVCPeopleDatabase.Models.Services
                 OriginalCity.CityName = editCity.CityName;
                 
             }
-            return _cityRepo.Update(OriginalCity);
+            return _cityRepo.Update(
+                OriginalCity);
         }
 
       

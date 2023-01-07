@@ -126,16 +126,16 @@ namespace MVCPeopleDatabase.Controllers
 
         }
 
-        [HttpPost]
-        public IActionResult FindPersonsByCityName(string cityName)
-        {
-            if (cityName != null)
-            {
-               var foundCity = _cityService.FindByCityName(cityName);
-                return View(_peopleService.FindByCity(foundCity));
-            }
-            return RedirectToAction(nameof(PersonPage));
-        }
+        //[HttpPost]
+        //public IActionResult FindPersonsByCityName(string cityName)
+        //{
+        //    if (cityName != null)
+        //    {
+        //       var foundCity = _cityService.FindByCity(cityName);
+        //        return View(_peopleService.FindByCity(foundCity));
+        //    }
+        //    return RedirectToAction(nameof(PersonPage));
+        //}
 
         //This is for ajaxListOfPoeple-get-function in Ajax.
         public IActionResult PartialViewPeople()

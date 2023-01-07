@@ -20,7 +20,7 @@ namespace MVCPeopleDatabase.Models.Repo
 
         public bool Delete(City city)
         {
-           _peopleDbContext.Cities.Remove(city);
+            _peopleDbContext.Cities.Remove(city);
             _peopleDbContext.SaveChanges();
             return true;
         }
