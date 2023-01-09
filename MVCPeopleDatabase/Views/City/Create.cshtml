@@ -1,4 +1,4 @@
-﻿@model MVCPeopleDatabase.Models.ViewModels.CityViewModel
+﻿@model MVCPeopleDatabase.Models.ViewModels.CreateCityViewModel
 
 @{
     ViewData["Title"] = "CreateCity";
@@ -13,14 +13,14 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="FilterString" class="control-label"></label>
-                <input asp-for="FilterString" class="form-control" />
-                <span asp-validation-for="FilterString" class="text-danger"></span>
+                <label asp-for="CityName" class="control-label"></label>
+                <input asp-for="CityName" class="form-control" />
+                <span asp-validation-for="CityName" class="text-danger"></span>
             </div>
             <datalist id="CityNameList">
-                @foreach (string CityName in Model.CityNameList)
+                @foreach (Country country in Model.Countries)
                 {
-                    <option value="@Country.Id">@Country.Name</option>
+                    <option value="@country.Id">@country.Name</option>
                 }
             </datalist>
             <div class="form-group">

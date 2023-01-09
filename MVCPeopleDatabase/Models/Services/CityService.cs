@@ -6,6 +6,7 @@ namespace MVCPeopleDatabase.Models.Services
     public class CityService : ICityService
     {
         private readonly ICityRepo _cityRepo;
+      
 
         public CityService (ICityRepo cityRepo) 
         {
@@ -23,8 +24,15 @@ namespace MVCPeopleDatabase.Models.Services
             {
 
                 city.CityName = createCity.CityName;
-                
-               
+                foreach (Country country in _peopleDbContext.Countries.ToList())
+                {
+                    if (createCity.CountryName == country.Name)
+                    {
+                        city.Country = country;
+                    }
+                }
+
+
 
             }
             city = _cityRepo.Create(city);

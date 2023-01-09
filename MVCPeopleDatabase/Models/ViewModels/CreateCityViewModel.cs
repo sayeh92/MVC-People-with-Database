@@ -5,10 +5,16 @@ namespace MVCPeopleDatabase.Models.ViewModels
 {
     public class CreateCityViewModel
     {
-        [StringLength(80, MinimumLength = 1)]
-        [Display(Name = "City")]
         [Required]
+        [StringLength(80, MinimumLength = 2)]
+        [Display(Name = "City Name")]
         public string? CityName { get; set; }
-      
+        public List<Person>? PeopleList { get; set; }
+        public int CountryId { get; set; }
+        public List<Country>? Countries { get; set; }
+
+        public CreateCityViewModel() { Countries = new List<Country>(); }
+
+
     }
 }

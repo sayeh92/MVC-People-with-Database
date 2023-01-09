@@ -54,7 +54,7 @@ namespace MVCPeopleDatabase.Controllers
 
         public IActionResult Details(int id)
         {
-            Language language = _languageService.FindLanguage(id);
+            Language language = _languageService.FindById(id);
 
             if (language == null)
             {
@@ -68,7 +68,7 @@ namespace MVCPeopleDatabase.Controllers
         [AutoValidateAntiforgeryToken]
         public IActionResult Edit(int id)
         {
-            Language language = _languageService.FindLanguage(id);
+            Language language = _languageService.FindById(id);
             if (language == null)
             {
                 return RedirectToAction(nameof(Index));
@@ -89,7 +89,7 @@ namespace MVCPeopleDatabase.Controllers
         {
             if (ModelState.IsValid)
             {
-                _languageService.Update(id, editLanguage);
+                _languageService.UpdateById(id, editLanguage);
                 return RedirectToAction(nameof(Index));
             }
             _languageService.Add(editLanguage);
@@ -107,7 +107,7 @@ namespace MVCPeopleDatabase.Controllers
             }
             else
             {
-                _languageService.RemoveById(id);
+                _languageService.DeleteById(id);
             }
 
             return View(language);

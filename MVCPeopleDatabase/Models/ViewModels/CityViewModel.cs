@@ -2,12 +2,12 @@
 {
     public class CityViewModel
     {
-        public List<City> ListOfCityView { get; set; }
+        public List<City> cities { get; set; }
         public string FilterString { get; set; }
 
         public CityViewModel()
         {
-            ListOfCityView = new List<City>();
+            cities = new List<City>();
         }
     }
 }

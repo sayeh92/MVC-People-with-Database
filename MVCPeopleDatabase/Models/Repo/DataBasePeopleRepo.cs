@@ -5,9 +5,8 @@ namespace MVCPeopleDatabase.Models.Repo
 {
     public class DataBasePeopleRepo : IPeopleRepo
     {
-       private readonly PeopleDbContext _peopleDbContext;
-
-        public DataBasePeopleRepo (PeopleDbContext peopleDbContext)
+        readonly PeopleDbContext _peopleDbContext;
+        public DataBasePeopleRepo(PeopleDbContext peopleDbContext)
         {
             _peopleDbContext = peopleDbContext;
         }
@@ -26,10 +25,11 @@ namespace MVCPeopleDatabase.Models.Repo
         //    return _peopleDbContext.People.Where(person => person.CityName.Contains(cityname)).ToList();
         //}
 
-        public List<Person> Read()
+        public List<Person> ReadAll()
         {
             //return _peopleDbContext.People.ToList();
-            return _peopleDbContext.People.Include(person => person.City).ToList();
+            return _peopleDbContext.People.Include(person => person.City).ThenInclude(person => person.Country).ToList();
+            //return _peopleDbContext.People.Include(person => person.City).ToList();
         }
 
         public Person Read(int id)

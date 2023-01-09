@@ -22,7 +22,7 @@
         }
 
         //Showing all person
-        public List<Person> Read()
+        public List<Person> ReadAll()
         {
             return ListOfPeople;
         }

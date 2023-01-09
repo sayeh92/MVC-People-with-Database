@@ -5,7 +5,7 @@
         //CREATE
         public Person Add(/*String name, string phonenumber, string cityname*/ Person person);
         //READ
-        public List<Person> Read();
+        public List<Person> ReadAll();
 
         //public List<Person> GetByCity(string cityname);
 

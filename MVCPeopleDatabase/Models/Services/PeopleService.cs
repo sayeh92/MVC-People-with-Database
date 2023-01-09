@@ -53,7 +53,7 @@ namespace MVCPeopleDatabase.Models.Services
 
         public List<Person> FindAllPeople()
         {
-            return _peopleRepo.Read();
+            return _peopleRepo.ReadAll();
         }
 
         //public List<Person> FindByCity(string cityname)
